@@ -136,7 +136,7 @@ Cons：
 
 *<p align="center">Fig 10.Final works presentation</p>*
 
-在成果測試時使用的Source images是取自GAN-Dissection，目的是爲了與後者做一個比對。
+&emsp;&emsp;在成果測試時使用的Source images是取自GAN-Dissection，目的是爲了與後者做一個比對。
 有上面的結果圖我們可以從第一組圖中看出，Iizuka的Inpainting在對物體邊緣區域缺失的case下實現的是removal的效果；
 第二組圖片中我們扣掉的是建築物半包裹的一整棵綠色植物，最終呈現的是remove掉綠色的植物并且按照圖中建築的特色來實現缺陷部分的inpainting；
 第三組圖片我們扣掉了半個屋頂，很有意思的是inpainting后生成的圖片出現了原圖未有的疑似烟囪的物體，這應該是其model訓練使用的是擁有1400w+images、2w+tags這樣龐大dataset的imagenet數據集，使得其能夠根據圖片整體信息生成出更符合實際生活的images。
@@ -150,9 +150,9 @@ Cons：
 
 *<p align="center">Fig 11.Final works with Post-processing presentation</p>*
 
-我們也做了有無Post-processing之間的一個比較，可以發現效果並沒有論文中show出（詳見Fig.9）的，可能是因爲其采用的是比較基礎的平滑化處理,在缺失區域周圍較爲複雜的case下難以達到好的效果。
+&emsp;&emsp;我們也做了有無Post-processing之間的一個比較，可以發現效果並沒有論文中show出（詳見Fig.9）的，可能是因爲其采用的是比較基礎的平滑化處理,在缺失區域周圍較爲複雜的case下難以達到好的效果。
 
-cons：
+Cons：
 經過與GAN-Dissection的對比，我們發現兩種做法在應用上都能夠實現圖像object的removal和inpainting，但是相比之下，Iizuka的inpainting在效果上并沒有GAN-Dissection好，在圖中各種object的feature的挖掘上并沒有GAN-Dissection徹底，缺失部分的inpainting雖有較高的解析度但是并沒有和其周邊的像素銜接的很好，也正是因爲這樣，作者不得不在最後加上一個用於平滑化的Post-processing。但也如上測試，感覺效果不怎麽樣。
 > Although our network model can plausibly fill missing regions, sometimes the generated area has subtle color inconsistencies with the surrounding regions. To avoid this, we perform simple post-processing by blending the completed region with the color of the surrounding pixels. In particular, we employ the fast marching method [Telea 2004], followed by Poisson image blending [Pérez et al. 2003].
 > [name=Sakoto Iizuka] 
@@ -161,6 +161,7 @@ cons：
   
 ## Conclusion
 **GAN Dissection**分析不同layer中的unit和class的相關性(Dissection)並且找出一組和class的生成或消失的units(Intervention)。之後透過這兩個性質控制units並在畫面中生成或是移除物件，然而model在生成或是移除移除物件時仍然會用model學到關於該物件的合理性作為參考。
+**Exemplar-Based Inpainting**通過迭代更新像素點的置信度來進行移除或是修補圖像的效果。不用訓練，轉換速度快，在一定的環境下轉換效果尚可，但是對於較大的圖片或是高解析度的圖片可能效率很低甚至無法進行移除或修補。
 
 ## Appendix
 ![](https://i.imgur.com/ABNB5uM.jpg)
