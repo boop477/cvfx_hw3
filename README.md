@@ -17,7 +17,7 @@
 根據使用者的輸入移除或生成在自然影像中的物件。
 
 ## GAN Dissection
-Gan Dissection試著解決GAN model中學到blacl box的問題，透過分析並且視覺化不同layer中的unit去了解GAN model在不同層數時學到的東西。Gan Dissection從兩個面向分析不同unit:
+Gan Dissection試著解決GAN model中學到black box的問題，透過分析並且視覺化不同layer中的unit去了解GAN model在不同層數時學到的東西。Gan Dissection從兩個面向分析不同unit:
 
 **1. Dissection**: 評估unit所著重的class。GAN Dissection透過計算`intersection-over-union(IoU)`去評估unit和所有class之間的相似性，並且將相似性最高的class當作該unit所著重的class。
 
@@ -160,6 +160,7 @@ cons：
 
   
 ## Conclusion
+**GAN Dissection**分析不同layer中的unit和class的相關性(Dissection)並且找出一組和class的生成或消失的units(Intervention)。之後透過這兩個性質控制units並在畫面中生成或是移除物件，然而model在生成或是移除移除物件時仍然會用model學到關於該物件的合理性作為參考。
 
 ## Appendix
 ![](https://i.imgur.com/ABNB5uM.jpg)
