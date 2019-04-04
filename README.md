@@ -161,7 +161,7 @@ Cons：
   
 ## Conclusion
 **GAN Dissection**分析不同layer中的unit和class的相關性(Dissection)並且找出一組和class的生成或消失的units(Intervention)。之後透過這兩個性質控制units並在畫面中生成或是移除物件，然而model在生成或是移除移除物件時仍然會用model學到關於該物件的合理性作為參考。
-**Exemplar-Based Inpainting**通過迭代更新像素點的置信度來進行移除或是修補圖像的效果。不用訓練，轉換速度快，在一定的環境下轉換效果尚可，但是對於較大的圖片或是高解析度的圖片可能效率很低甚至無法進行移除或修補。
+<br>**Exemplar-Based Inpainting**通過迭代更新像素點的置信度來進行移除或是修補圖像的效果。不用訓練，轉換速度快，在一定的環境下轉換效果尚可，但是對於較大的圖片或是高解析度的圖片可能效率很低甚至無法進行移除或修補。
 
 ## Appendix
 ![](https://i.imgur.com/ABNB5uM.jpg)
