@@ -160,6 +160,6 @@ cons：
 ![](https://i.imgur.com/ABNB5uM.jpg)
 
 ## Reference
-[1] A. Criminisi, P. Perez, and K. Toyama, “Region filling and object removal by exemplar-based image inpainting,” IEEE Trans. Image Process., vol. 13, no. 9, Sep. 2004.
-[2] Satoshi Iizuka, Edgar Simo-Serra, and Hiroshi Ishikawa，"Globally and Locally Consistent Image Completion" ACM Transaction on Graphics (Proc. of SIGGRAPH 2017), 2017
+[1] A. Criminisi, P. Perez, and K. Toyama, “Region filling and object removal by exemplar-based image inpainting,” IEEE Trans. Image Process., vol. 13, no. 9, Sep. 2004.<br>
+[2] Satoshi Iizuka, Edgar Simo-Serra, and Hiroshi Ishikawa，"Globally and Locally Consistent Image Completion" ACM Transaction on Graphics (Proc. of SIGGRAPH 2017), 2017<br>
 [3] D. Bau, J.-Y. Zhu, H. Strobelt, B. Zhou, J. B. Tenenbaum, W. T. Freeman, and A. Torralba, “Gan dissection: Visualizing and understanding generative adversarial networks,” arXiv preprint arXiv:1811.10597, 2018.
