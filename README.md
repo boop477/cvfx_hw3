@@ -65,7 +65,7 @@ Gan Dissection試著解決GAN model中學到black box的問題，透過分析並
   *Fig.3-b*：p點為邊界上的某一點，以p點為中心設置一個區塊（綠色方框）。
   *Fig.3-c*：從來源區域找與p的為中心的區塊相似的區塊（q'和q''）。
   *Fig.3-d*：在相似區塊中找到更為適合匹配的區塊進行填充（優先級更高的區塊）。<br>
-![](https://i.imgur.com/5ippERI.png)
+*<p align="center">![](https://i.imgur.com/5ippERI.png)</p>*
 *<p align="center">Fig.3 Structure propagation by exemplar-based texture synthesis </p>*
 
 2.   找初始來源區域與目標區域的邊界
@@ -83,7 +83,7 @@ Gan Dissection試著解決GAN model中學到black box的問題，透過分析並
        ![](https://i.imgur.com/F7jV2fS.png)<br>
        ∇I⊥p: isophote (direction and intensity) of p.
        n<sub>p</sub>:輪廓在p點的法向量
-      ![](https://i.imgur.com/qczgIAv.png)<br>
+      *<p align="center">![](https://i.imgur.com/qczgIAv.png)</p>*<br>
       *<p align="center">Fig.4 Notation diagram of formula</p>*
        
       *  找到最高置信度的patch，基於該patch在來源區域尋找匹配的區域進行填充。
@@ -114,17 +114,17 @@ Cons：
 
 &emsp;&emsp;Globally and Locally Consistent Image Completion(GL)是來自于日本早稻田大學的Satoshi Iizuka等人2017年發表于SIGGRAPH的文章。其論文提出了一個基於GAN思想建立的捲積網絡，重點在於其設計了兩種discriminator(global discriminator&local discriminator),以達到生成圖像能保證全局語義又能提高修復部分圖像的紋理質量和解析度。
 <br>**Step:**
-![](https://i.imgur.com/JWR6CzZ.png)
+*<p align="center">![](https://i.imgur.com/JWR6CzZ.png)</p>*
 *<p align="center">Fig 6.Architecture for learning image completion</p>*
 1. completion network<br>comcompletion network采用context encode的架構，包含encoding跟decoding兩個部分。encoding部分使用12層的convolution layers降低圖片的解析度到1/16的大小，爲了保證生成圖片不過於模糊，其中只使用了兩層的strided convolution將圖片解析度降低，并使用dilated convolutional layers（空洞捲積）能在相同的參數與計算能力下獲取更多的圖像信息。<br>
-![](https://i.imgur.com/XvRkWIg.png)
+*<p align="center">![](https://i.imgur.com/XvRkWIg.png)</p>*
 *<p align="center">Fig 7. Architecture of the image completion network</p>*
 
 2. Context discriminator<br>discriminator的部分如上所述分爲global discriminator與local discriminator，兩者分別通過了5x5的convolution layer和2x2的strid，最後通過全連接層連接使用sigmoid進行檢查（Real or Fake）來優化生成圖片。
-![](https://i.imgur.com/HbxA8Sz.png)
+*<p align="center">![](https://i.imgur.com/HbxA8Sz.png)</p>*
 *<p align="center">Fig 8.Architecture of the dsiscriminator</p>*
 3. Post-processing <br>最後作者還增加了一個簡單的post-processing收尾，目的是修正有的情況下修補區域會與周邊環境色調上的較大誤差。
-![](https://i.imgur.com/tUASxEC.png)
+*<p align="center">![](https://i.imgur.com/tUASxEC.png)</p>*
 *<p align="center">Fig 9.Effect of simple Post-processing in GL</p>*
 <br>**Result:**
 
