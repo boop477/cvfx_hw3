@@ -154,15 +154,15 @@ Cons：
 
 Cons：
 經過與GAN-Dissection的對比，我們發現兩種做法在應用上都能夠實現圖像object的removal和inpainting，但是相比之下，Iizuka的inpainting在效果上并沒有GAN-Dissection好，在圖中各種object的feature的挖掘上并沒有GAN-Dissection徹底，缺失部分的inpainting雖有較高的解析度但是并沒有和其周邊的像素銜接的很好，也正是因爲這樣，作者不得不在最後加上一個用於平滑化的Post-processing。但也如上測試，感覺效果不怎麽樣。
-> Although our network model can plausibly fill missing regions, sometimes the generated area has subtle color inconsistencies with the surrounding regions. To avoid this, we perform simple post-processing by blending the completed region with the color of the surrounding pixels. In particular, we employ the fast marching method [Telea 2004], followed by Poisson image blending [Pérez et al. 2003].
-> [name=Sakoto Iizuka] 
+> Sakoto Iizuka在文章中寫道:<br>Although our network model can plausibly fill missing regions, sometimes the generated area has subtle color inconsistencies with the surrounding regions. To avoid this, we perform simple post-processing by blending the completed region with the color of the surrounding pixels. In particular, we employ the fast marching method [Telea 2004], followed by Poisson image blending [Pérez et al. 2003].
+
 
 
   
 ## Conclusion
 **GAN Dissection**分析不同layer中的unit和class的相關性(Dissection)並且找出一組和class的生成或消失的units(Intervention)。之後透過這兩個性質控制units並在畫面中生成或是移除物件，然而model在生成或是移除移除物件時仍然會用model學到關於該物件的合理性作為參考。
 <br>**Exemplar-Based Inpainting**通過迭代更新像素點的置信度來進行移除或是修補圖像的效果。不用訓練，轉換速度快，在一定的環境下轉換效果尚可，但是對於較大的圖片或是高解析度的圖片可能效率很低甚至無法進行移除或修補。
-
+<br>**Globally and Locally Consistent Image Completion**Iizuka等人基於GAN建立的網路設計了Global&Local兩個discriminator，並基於强大的Imagenet的dataset，其能夠依照全圖的内容資訊進行合理的inpainting以及removal，但是inpainting後與缺失部分周圍的像素在色調上并沒有很好的銜接，作者因此在最後加上了Simple Post-processing，能在某些case上起到一定的效果但大多數複雜的情況下效果并沒有非常好。
 ## Appendix
 ![](https://i.imgur.com/ABNB5uM.jpg)
 
