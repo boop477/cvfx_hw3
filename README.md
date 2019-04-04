@@ -46,22 +46,23 @@ Gan Dissection試著解決GAN model中學到blacl box的問題，透過分析並
 | Layer 1 |![](https://i.imgur.com/4Iw8R2v.jpg)|![](https://i.imgur.com/38akNxy.jpg)|![](https://i.imgur.com/RNBmmVR.jpg)|
 | Layer 4 |![](https://i.imgur.com/pWoXIvC.jpg)|![](https://i.imgur.com/KVx4LkO.jpg)|![](https://i.imgur.com/LnvqXNK.jpg)|
 | Layer 7 |![](https://i.imgur.com/YRZttiM.jpg)|![](https://i.imgur.com/jRaefdB.jpg)|![](https://i.imgur.com/AIQALaL.jpg)|
+
 *<p align="center">Fig 2. Visualize units in layer 1, layer 4, and layer 7.</p>*
 
-我們使用LSUN living room progressive GAN作為dissection target並且視覺化layer1 layer3 layer7裡面unit所代表的class。Fig 2內被黃線圈起來的區域代表該unit注意的class，我們可以發現訓練在living room的model裡面的unit會專注於living room常出現的傢俱上，像是書櫃，
+&emsp;&emsp;我們使用LSUN living room progressive GAN作為dissection target並且視覺化layer1 layer3 layer7裡面unit所代表的class。Fig 2內被黃線圈起來的區域代表該unit注意的class，我們可以發現訓練在living room的model裡面的unit會專注於living room常出現的傢俱上，像是書櫃，
 落地窗，沙發和壁畫。
 
 ## Compare with other methods
 ### Exemplar-Based Inpainting
 
-  Exemplar-Based Inpainting算是image inpainting裡面比較傳統的方法。結合了texture synthesis與基於微積分的計算來實現目標的移除或是修復。
+&emsp;&emsp;Exemplar-Based Inpainting算是image inpainting裡面比較傳統的方法。結合了texture synthesis與基於微積分的計算來實現目標的移除或是修復。
   
 **Steps：**
 1.   區域劃分
   *Fig.3-a*：Φ為來源區域，Ω為目標區域。
   *Fig.3-b*：p點為邊界上的某一點，以p點為中心設置一個區塊（綠色方框）。
   *Fig.3-c*：從來源區域找與p的為中心的區塊相似的區塊（q'和q''）。
-  *Fig.3-d*：在相似區塊中找到更為適合匹配的區塊進行填充（優先級更高的區塊）。
+  *Fig.3-d*：在相似區塊中找到更為適合匹配的區塊進行填充（優先級更高的區塊）。<br>
 ![](https://i.imgur.com/5ippERI.png)
 *<p align="center">Fig.3 Structure propagation by exemplar-based texture synthesis </p>*
 
@@ -91,12 +92,12 @@ Gan Dissection試著解決GAN model中學到blacl box的問題，透過分析並
   
   Data source：[The Street View Text Dataset（SVT）](http://www.iapr-tc11.org/mediawiki/index.php/The_Street_View_Text_Dataset?fbclid=IwAR1hVNFBwjR1-a_fu2N769q549HRNPAqh5shCLrHj3h4_dgYwTTmqYPRk4E)
   
-  如圖*Fig.*所示，第一個column是原圖，第二個column是手動mask（黑色部分為mask的區域）想要移除的人或物（分別是兩張人、花壇和窗戶），第三個column則是移除後的效果。
+&emsp;&emsp;如圖*Fig.5*所示，第一個column是原圖，第二個column是手動mask（黑色部分為mask的區域）想要移除的人或物（分別是兩張人、花壇和窗戶），第三個column則是移除後的效果。
 
 ![](https://i.imgur.com/iLstnt4.jpg)
 *<p align="center">Fig 5.  Left:Original Image  Center:Masked  Image Right:Output</p>*
 
-<br>Pros：
+<br>Pros：<br>
 &emsp;&emsp;可以很明顯的看出，Exemplar-Based Inpainting在小範圍且mask邊緣背景顏色變化不大的區域移除效果不錯。
 
 Cons：
@@ -109,11 +110,11 @@ Cons：
 
 ### Globally and Locally Consistent Image Completion
 
-Globally and Locally Consistent Image Completion(GL)是來自于日本早稻田大學的Satoshi Iizuka等人2017年發表于SIGGRAPH的文章。其論文提出了一個基於GAN思想建立的捲積網絡，重點在於其設計了兩種discriminator(global discriminator&local discriminator),以達到生成圖像能保證全局語義又能提高修復部分圖像的紋理質量和解析度。
+&emsp;&emsp;Globally and Locally Consistent Image Completion(GL)是來自于日本早稻田大學的Satoshi Iizuka等人2017年發表于SIGGRAPH的文章。其論文提出了一個基於GAN思想建立的捲積網絡，重點在於其設計了兩種discriminator(global discriminator&local discriminator),以達到生成圖像能保證全局語義又能提高修復部分圖像的紋理質量和解析度。
 <br>**Step:**
 ![](https://i.imgur.com/JWR6CzZ.png)
 *<p align="center">Fig 6.Architecture for learning image completion</p>*
-1. completion network<br>comcompletion network采用context encode的架構，包含encoding跟decoding兩個部分。encoding部分使用12層的convolution layers降低圖片的解析度到1/16的大小，爲了保證生成圖片不過於模糊，其中只使用了兩層的strided convolution將圖片解析度降低，并使用dilated convolutional layers（空洞捲積）能在相同的參數與計算能力下獲取更多的圖像信息。
+1. completion network<br>comcompletion network采用context encode的架構，包含encoding跟decoding兩個部分。encoding部分使用12層的convolution layers降低圖片的解析度到1/16的大小，爲了保證生成圖片不過於模糊，其中只使用了兩層的strided convolution將圖片解析度降低，并使用dilated convolutional layers（空洞捲積）能在相同的參數與計算能力下獲取更多的圖像信息。<br>
 ![](https://i.imgur.com/XvRkWIg.png)
 *<p align="center">Fig 7. Architecture of the image completion network</p>*
 
@@ -130,6 +131,7 @@ Globally and Locally Consistent Image Completion(GL)是來自于日本早稻田�
 |![](https://i.imgur.com/yu4Ag7y.png)|![](https://i.imgur.com/AhB9Ajw.png)|![](https://i.imgur.com/aQ5BVTX.png)|
 |![](https://i.imgur.com/Rr0e7Lp.png)|![](https://i.imgur.com/duVJqln.png)|![](https://i.imgur.com/qzrMkxw.png)|
 |![](https://i.imgur.com/FifoBrU.png)|![](https://i.imgur.com/deoMBYU.png)|![](https://i.imgur.com/sxRApw7.png)|
+
 *<p align="center">Fig 10.Final works presentation</p>*
 
 在成果測試時使用的Source images是取自GAN-Dissection，目的是爲了與後者做一個比對。
@@ -143,6 +145,7 @@ Globally and Locally Consistent Image Completion(GL)是來自于日本早稻田�
 |![](https://i.imgur.com/TDg8UnB.png)|![](https://i.imgur.com/t3s1kum.png)|![](https://i.imgur.com/QB001YI.png)|![](https://i.imgur.com/qPgJiXp.png)|
 |![](https://i.imgur.com/hRPuBQB.png)|![](https://i.imgur.com/AfQrXIY.png)|![](https://i.imgur.com/ZhqcEgG.png)|![](https://i.imgur.com/zQdAjUF.png)|
 |![](https://i.imgur.com/3WE1a92.png)|![](https://i.imgur.com/xTM6s6L.png)|![](https://i.imgur.com/dMSWJr4.png)|![](https://i.imgur.com/hnNkTii.png)|
+
 *<p align="center">Fig 11.Final works with Post-processing presentation</p>*
 
 我們也做了有無Post-processing之間的一個比較，可以發現效果並沒有論文中show出（詳見Fig.9）的，可能是因爲其采用的是比較基礎的平滑化處理,在缺失區域周圍較爲複雜的case下難以達到好的效果。
