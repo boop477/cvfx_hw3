@@ -60,10 +60,10 @@ Gan Dissection試著解決GAN model中學到black box的問題，透過分析並
 &emsp;&emsp;Exemplar-Based Inpainting算是image inpainting裡面比較傳統的方法。結合了texture synthesis與基於微積分的計算來實現目標的移除或是修復。
   
 **Steps：**
-1.   區域劃分
-  *Fig.3-a*：Φ為來源區域，Ω為目標區域。
-  *Fig.3-b*：p點為邊界上的某一點，以p點為中心設置一個區塊（綠色方框）。
-  *Fig.3-c*：從來源區域找與p的為中心的區塊相似的區塊（q'和q''）。
+1.   區域劃分<br>
+  *Fig.3-a*：Φ為來源區域，Ω為目標區域。<br>
+  *Fig.3-b*：p點為邊界上的某一點，以p點為中心設置一個區塊（綠色方框）。<br>
+  *Fig.3-c*：從來源區域找與p的為中心的區塊相似的區塊（q'和q''）。<br>
   *Fig.3-d*：在相似區塊中找到更為適合匹配的區塊進行填充（優先級更高的區塊）。<br>
 *<p align="center">![](https://i.imgur.com/5ippERI.png)</p>*
 *<p align="center">Fig.3 Structure propagation by exemplar-based texture synthesis </p>*
