@@ -40,6 +40,7 @@ Gan Dissection試著解決GAN model中學到blacl box的問題，透過分析並
 &emsp;&emsp;我們從生成圖片觀察到，在合理的改變之下可以生成合理的圖片。例如將樹木移除後，生成的圖片變成建築物(Fig 1b)；將房子前的草地移除後則是變成人行道(Fig 1c)；把門移除的話則是產生窗戶(Fig 1d)。此外我們也在天空中加上雲，生成的圖片可以在原本是天空的地區生成雲，但是有些塗到建築物的地方則是會讓建築物的輪廓變形(Fig 1e 裡面圖片右側的尖塔變成紅蘿蔔形狀的謎樣物體)；如果我們把讓整張圖片都變成雲的話則會把原本平坦的地方(地面)試圖鋪上雲的texture，建築物的部分texture看起來不自然(Fig 1f)。<br>
 &emsp;&emsp;從在不合理的地方生成雲這項操作中可以發現：model並非像複製貼上一樣在任何地方都可以生成物件，而是在經過learning之後學的該物件可能出現的合理地方才能夠生成物件。如果很任性地堅持要在不合理地方生成物件的話，除了無法生成之外更會讓原本就在那邊的變形或是失去自然的texture。
 
+---
 ### Dissect any GAN model and analyze
 | Layers | Visualized units | Visualized units | Visualized units |
 |:-------:|:-------:| :-------:| :-------:| 
@@ -51,6 +52,7 @@ Gan Dissection試著解決GAN model中學到blacl box的問題，透過分析並
 
 &emsp;&emsp;我們使用LSUN living room progressive GAN作為dissection target並且視覺化layer1 layer3 layer7裡面unit所代表的class。Fig 2內被黃線圈起來的區域代表該unit注意的class，我們可以發現訓練在living room的model裡面的unit會專注於living room常出現的傢俱上，像是書櫃，
 落地窗，沙發和壁畫。
+
 
 ## Compare with other methods
 ### Exemplar-Based Inpainting
